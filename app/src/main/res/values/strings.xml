@@ -18,4 +18,9 @@
     <string name="text">Text:</string>
     <string name="labels">Labels:</string>
     <string name="input_image">Select an image</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="login_prompt">Already Registered , Sign In !</string>
+    <string name="retype_your_password">Retype Your Password</string>
+    <string name="type_your_password">Type Your Password</string>
+    <string name="type_your_email">Type your Email</string>
 </resources>
