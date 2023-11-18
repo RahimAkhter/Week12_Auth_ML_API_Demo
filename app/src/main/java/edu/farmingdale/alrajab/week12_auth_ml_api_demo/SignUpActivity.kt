@@ -23,7 +23,7 @@ class SignUpActivity : AppCompatActivity() {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
-        binding.button.setOnClickListener {
+        binding.signup.setOnClickListener {
             val email = binding.emailEt.text.toString()
             val pass = binding.passET.text.toString()
             val confirmPass = binding.confirmPassEt.text.toString()
@@ -37,7 +37,6 @@ class SignUpActivity : AppCompatActivity() {
                             startActivity(intent)
                         } else {
                             Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
-
                         }
                     }
                 } else {
