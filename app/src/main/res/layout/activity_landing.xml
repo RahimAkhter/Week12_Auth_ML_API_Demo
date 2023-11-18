@@ -3,75 +3,146 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:context=".LandingActivity">
 
-    <TextView
-        android:id="@+id/welcome_user"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_marginTop="10dp"
-        android:text="Hello: " />
     <LinearLayout
+        android:id="@+id/username_box"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="50dp"
-        android:orientation="horizontal">
-    <EditText
-        android:id="@+id/image_url_field"
-        android:layout_width="0dp"
-        android:layout_weight="10"
         android:layout_height="wrap_content"
-        android:hint="Image URL"
-        android:imeOptions="actionDone"
-        android:inputType="textUri" />
-        <Button
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hello"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/username"
             android:layout_width="0dp"
-            android:layout_weight="1"
-            android:minWidth="30dp"
-            android:layout_height="30dp"
-            android:id="@+id/load_iamge_btn"
-            android:background="@drawable/ic_baseline_image_24"/>
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/image_button"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_below="@id/username_box"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_weight="1"
+        android:text="@string/input_image"/>
 
     <ImageView
         android:id="@+id/image_holder"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_below="@id/image_url_field"
-        android:layout_marginTop="10dp"
+        android:layout_below="@id/image_button"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/imageyouwi"
         android:scaleType="centerInside" />
 
+
     <LinearLayout
+        android:id="@+id/recognized_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/image_holder"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/extractedText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/labels_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/recognized_text"
+        android:layout_above="@id/progress_bar"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/labels"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/labels"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:indeterminate="true"
+        android:layout_above="@id/actions"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <LinearLayout
+        android:id="@+id/actions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/recognize"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="4dp"
             android:layout_weight="0.33"
-            android:onClick="recognizeText"
-            android:layout_margin="5dp"
-
-            android:text="Text" />
+            android:enabled="false"
+            android:text="@string/recognize" />
 
         <Button
+            android:id="@+id/generate"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="4dp"
             android:layout_weight="0.33"
-            android:onClick="generateLabels"
-            android:layout_margin="5dp"
-
-            android:text="Labels" />
+            android:enabled="false"
+            android:text="@string/generate_labels" />
 
         <Button
             android:id="@+id/logout_btn"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="4dp"
             android:layout_weight="0.33"
-            android:layout_margin="5dp"
-            android:text="logout" />
+            android:text="@string/logout" />
     </LinearLayout>
 
 </RelativeLayout>
