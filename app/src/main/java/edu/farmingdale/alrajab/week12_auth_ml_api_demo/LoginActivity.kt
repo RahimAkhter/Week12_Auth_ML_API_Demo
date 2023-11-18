@@ -100,7 +100,9 @@ class LoginActivity : AppCompatActivity(), OnCompleteListener<AuthResult> {
 		val pass = binding.passET.text.toString()
 
 		if (email.isNotEmpty() && pass.isNotEmpty()) {
-			firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(this, this)
+			firebaseAuth.signInWithEmailAndPassword(email, pass)
+				.addOnCompleteListener(this, this)
+				.addOnFailureListener(::handleException)
 		} else {
 			Toast.makeText(this, "Empty Fields Are not Allowed !!", Toast.LENGTH_SHORT).show()
 		}
