@@ -107,7 +107,7 @@ class LoginActivity : AppCompatActivity(), OnCompleteListener<AuthResult> {
 	}
 
 	/**
-	 * OnComplete listener for successful signins
+	 * OnComplete listener for successful sign ins
 	 */
 	override fun onComplete(task: Task<AuthResult>) {
 		if (task.isSuccessful) {
@@ -118,7 +118,7 @@ class LoginActivity : AppCompatActivity(), OnCompleteListener<AuthResult> {
 	}
 
 	/**
-	 * Convenience function to handle exceptiosn
+	 * Convenience function to handle exceptions.
 	 */
 	private fun handleException(e: Exception?) {
 		e?.printStackTrace()
