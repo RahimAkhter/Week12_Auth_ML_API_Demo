@@ -19,10 +19,24 @@ import java.lang.Exception
 
 class LoginActivity : AppCompatActivity(), OnCompleteListener<AuthResult> {
 
+	/**
+	 * View binding.
+	 */
 	private lateinit var binding: ActivityLoginBinding
+
+	/**
+	 * Firebase authentication handler.
+	 */
 	private lateinit var firebaseAuth: FirebaseAuth
-	private lateinit var gso: GoogleSignInOptions
+
+	/**
+	 * Client to call for sign in events.
+	 */
 	private lateinit var gsoClient: GoogleSignInClient
+
+	/**
+	 * Launcher to get a google sign on.
+	 */
 	private val gsoSignInLauncher = registerForActivityResult(
 		ActivityResultContracts.StartActivityForResult()
 	) { result ->
@@ -45,12 +59,13 @@ class LoginActivity : AppCompatActivity(), OnCompleteListener<AuthResult> {
 
 		firebaseAuth = FirebaseAuth.getInstance()
 
-		gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-			.requestIdToken(getString(R.string.default_web_client_id))
-			.requestEmail()
-			.build()
-
-		gsoClient = GoogleSignIn.getClient(this, gso)
+		gsoClient = GoogleSignIn.getClient(
+			this,
+			GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+				.requestIdToken(getString(R.string.default_web_client_id))
+				.requestEmail()
+				.build()
+		)
 
 		if (firebaseAuth.currentUser != null)
 			landing()
